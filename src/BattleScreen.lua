@@ -11,13 +11,10 @@ function BattleScreenType:match()
 end
 --------------------------------------------------------------------------------
 function BattleScreenType:autoBattle()
-  repeat  
-    stopLongClick()
-
-    continueClick(850, 500, 10, 10, 200)
-
-    longClick(Location(170, 600))
+  local pid = exec("." .. scriptPath() .. "src/battle.sh")
+  repeat
   until not self:match()
+  kill(pid)
 end
 --------------------------------------------------------------------------------
 function BattleScreenType:manualBattle()
